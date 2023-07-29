@@ -1,0 +1,5 @@
+- TO remove duplicates in Excel -  Go to Data (Beside File, Insert, ... ). CLick on remove Duplicates.. Consider the Columns thatshould be considered to define it as duplicate 
+- Upper Case :   =UPPER(C2)
+- =PROPER(C2)   --> Proper Casing
+- =TRIM(C2)    -> Removes Extra spaces at the start end and also more than one space in middle
+- When there is $ symbol.. You will need to remove it to consider th field as number.. So go to Currency section and set to number

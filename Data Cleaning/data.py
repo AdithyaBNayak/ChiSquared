@@ -108,7 +108,7 @@ Output:
 print("\n -----------------------------------------\n")
 print("\n Plotting the graph")
 sns.heatmap(df.isnull(), yticklabels=False,annot=True)
-plt.show()
+# plt.show()
 
 print("\nLets try to remove NaN values")
 
@@ -141,3 +141,98 @@ print(df.dropna(how="all"))
 8           8        1.0      12.0
 9           9        NaN      32.0
 """
+
+print("\n Fill NA values")
+print(df.fillna(0))
+"""
+ Fill NA values
+   Unnamed: 0  Tmprature  Humidity
+0           0        1.0       1.0
+1           1        0.0       0.0
+2           2        3.0      31.0
+3           3        2.0      22.0
+4           4        3.0      33.0
+5           5        1.0      11.0
+6           6        2.0      21.0
+7           7        0.0      24.0
+8           8        1.0      12.0
+9           9        0.0      32.0   
+"""
+
+print("\nFill NA values using FOrward fill method")
+print(df.fillna(method= 'ffill'))
+
+"""
+   Fill NA values using FOrward fill method
+   Unnamed: 0  Tmprature  Humidity
+0           0        1.0       1.0
+1           1        1.0       1.0
+2           2        3.0      31.0
+3           3        2.0      22.0
+4           4        3.0      33.0
+5           5        1.0      11.0
+6           6        2.0      21.0
+7           7        2.0      24.0
+8           8        1.0      12.0
+9           9        1.0      32.0
+"""
+
+print("\nFill NA values using Backward fill method")
+print(df.fillna(method= 'bfill'))
+"""
+Fill NA values using Backward fill method
+   Unnamed: 0  Tmprature  Humidity
+0           0        1.0       1.0
+1           1        3.0      31.0
+2           2        3.0      31.0
+3           3        2.0      22.0
+4           4        3.0      33.0
+5           5        1.0      11.0
+6           6        2.0      21.0
+7           7        1.0      24.0
+8           8        1.0      12.0
+9           9        NaN      32.0   
+   
+"""
+
+print("\nInterpolate NA values ")
+print(df.interpolate())
+"""
+Output: 
+\Interpolate NA values
+   Unnamed: 0  Tmprature  Humidity
+0           0        1.0       1.0
+1           1        2.0      16.0
+2           2        3.0      31.0
+3           3        2.0      22.0
+4           4        3.0      33.0
+5           5        1.0      11.0
+6           6        2.0      21.0
+7           7        1.5      24.0
+8           8        1.0      12.0
+9           9        1.0      32.0
+
+It takes the average of upper and lower values   
+   
+"""
+print("\n Fill Custom values to each column")
+print(df.fillna({
+   'Tmprature': '00000000',
+   'Humidity':'9999999'
+}))
+
+"""
+ Fill Custom values to each column
+   Unnamed: 0 Tmprature Humidity
+0           0       1.0      1.0
+1           1  00000000  9999999
+2           2       3.0     31.0
+3           3       2.0     22.0
+4           4       3.0     33.0
+5           5       1.0     11.0
+6           6       2.0     21.0
+7           7  00000000     24.0
+8           8       1.0     12.0
+9           9  00000000     32.0   
+   
+   """
